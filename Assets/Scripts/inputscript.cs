@@ -7,36 +7,31 @@ public class inputscript : MonoBehaviour
     private Animator animator;
     private Vector3 direction;
     private Rigidbody rb;
+    private float turn;
+    public float turnSensitivity = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = this.GetComponent<Animator>();
-        rb = this.GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
+        Cursor.lockState = CursorLockMode.Locked;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        float moveH = Input.GetAxis("Horizontal");
         float moveV = Input.GetAxis("Vertical");
 
-        bool hasMoveH = !Mathf.Approximately(moveH, 0);
         bool hasMoveV = !Mathf.Approximately(moveV, 0);
 
-        bool isWalking = hasMoveH || hasMoveV;
+        bool isWalking = hasMoveV;
         animator.SetBool("isWalking", isWalking);
 
-        if (isWalking)
-        {
-            direction = new Vector3(moveH, 0, moveV);
-            direction.Normalize();
-        }
+
+        turn += Input.GetAxis("Mouse X") * turnSensitivity;
+        transform.localRotation = Quaternion.Euler(0, turn, 0);
+        
     }
 
-    private void FixedUpdate()
-    {
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        rb.MoveRotation(rotation);
-    }
 }
