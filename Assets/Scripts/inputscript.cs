@@ -25,11 +25,25 @@ public class inputscript : MonoBehaviour
 
         bool hasMoveV = !Mathf.Approximately(moveV, 0);
 
-        bool isWalking = hasMoveV;
-        animator.SetBool("isWalking", isWalking);
+        if (!hasMoveV)
+        {
+            animator.SetBool("isWalking", false);
+            animator.SetBool("walkingBackward", false);
+        } else if (moveV > 0)
+        {
+            animator.SetBool("isWalking", true);
+            animator.SetBool("walkingBackward", false);
+        } else
+        {
+            animator.SetBool("isWalking", false);
+            animator.SetBool("walkingBackward", true);
+        }
+
+        float moveH = Input.GetAxis("Horizontal");
+        turn += moveH * turnSensitivity;
 
 
-        turn += Input.GetAxis("Mouse X") * turnSensitivity;
+        //turn += Input.GetAxis("Mouse X") * turnSensitivity;
         transform.localRotation = Quaternion.Euler(0, turn, 0);
         
     }
