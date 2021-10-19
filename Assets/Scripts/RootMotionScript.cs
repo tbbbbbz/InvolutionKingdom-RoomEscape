@@ -1,9 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-using UnityEngine.AI;
-
 [RequireComponent(typeof(Animator))]
+
 public class RootMotionScript : MonoBehaviour
 {
 
@@ -13,7 +12,16 @@ public class RootMotionScript : MonoBehaviour
 
         if (animator)
         {
-            //transform.position = new Vector3(0, 0, animator.GetFloat("WalkSpeed") * 0.01f);
+            Vector3 newPosition = transform.position;
+            Vector3 diff = transform.forward * animator.GetFloat("WalkSpeed") * Time.deltaTime;
+            if (animator.GetBool("IsForward"))
+            {
+                transform.position = newPosition + diff;
+            } else
+            {
+                transform.position = newPosition - diff * animator.GetFloat("BackSpeed");
+            }
+            
         }
     }
 }
