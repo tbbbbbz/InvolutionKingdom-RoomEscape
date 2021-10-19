@@ -39,9 +39,11 @@ public class inputscript : MonoBehaviour
             animator.SetBool("walkingBackward", true);
         }
 
+        float moveH = Input.GetAxis("Horizontal");
+        turn += moveH * turnSensitivity;
 
 
-        turn += Input.GetAxis("Mouse X") * turnSensitivity;
+        //turn += Input.GetAxis("Mouse X") * turnSensitivity;
         transform.localRotation = Quaternion.Euler(0, turn, 0);
         
     }
