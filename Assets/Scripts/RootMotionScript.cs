@@ -6,22 +6,33 @@ using System.Collections;
 public class RootMotionScript : MonoBehaviour
 {
 
+    public float animationSpeed = 1f;
+    public float rootMovementSpeed = 1f;
+    public float rootTurnSpeed = 1f;
+
+    private Rigidbody rbody;
+    private Animator anim;
+
+    private void Start()
+    {
+        rbody = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
+    }
+
     void OnAnimatorMove()
     {
-        Animator animator = GetComponent<Animator>();
+        Vector3 newRootPosition;
+        Quaternion newRootRotation;
 
-        if (animator)
-        {
-            Vector3 newPosition = transform.position;
-            Vector3 diff = transform.forward * animator.GetFloat("WalkSpeed") * Time.deltaTime;
-            if (animator.GetBool("IsForward"))
-            {
-                transform.position = newPosition + diff;
-            } else
-            {
-                transform.position = newPosition - diff * animator.GetFloat("BackSpeed");
-            }
-            
-        }
+
+        newRootPosition = anim.rootPosition;
+        //use rotational root motion as is
+        newRootRotation = anim.rootRotation;
+
+        newRootPosition = Vector3.LerpUnclamped(this.transform.position, newRootPosition, rootMovementSpeed);
+        newRootRotation = Quaternion.LerpUnclamped(this.transform.rotation, newRootRotation, rootTurnSpeed);
+
+        rbody.MovePosition(newRootPosition);
+        rbody.MoveRotation(newRootRotation);
     }
 }
