@@ -538,7 +538,6 @@ GameObject:
   - component: {fileID: 4550947538930570924}
   - component: {fileID: 4512731880003035773}
   - component: {fileID: 173166767543592095}
-  - component: {fileID: -447382876509280715}
   - component: {fileID: 4244953078876423320}
   m_Layer: 0
   m_Name: cat
@@ -633,21 +632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: []
---- !u!114 &-447382876509280715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4101844753579724976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f39528a0dfd394a349d48eaff072e5ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationSpeed: 1
-  rootMovementSpeed: 1
-  rootTurnSpeed: 1
+  behaviourState: 0
 --- !u!65 &4244953078876423320
 BoxCollider:
   m_ObjectHideFlags: 0
