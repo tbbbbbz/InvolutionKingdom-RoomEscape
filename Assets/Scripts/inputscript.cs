@@ -56,5 +56,8 @@ public class inputscript : MonoBehaviour
         animator.SetBool("Explore", false);
     }
 
-
+    public void beforeGettingUp ()
+    {
+        //todo insert UI here
+    }
 }
