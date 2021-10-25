@@ -4,7 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/morgueUI.unity
+    guid: 9858a53bb87e14d2eb435a492c546c37
+  - enabled: 1
+    path: Assets/Scenes/morgueStartMenu.unity
+    guid: 3edddeceec2a94968b16dbbf14401c66
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 6a5f559ac14bb4ac5aa3af4007e6ed78,
       type: 2}
