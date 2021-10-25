@@ -5,12 +5,14 @@ public class inputscript : MonoBehaviour
     private Animator animator;
     private float turn;
     public float turnSensitivity = 5f;
+    private DialogTrigger _dialogTrigger;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
+        _dialogTrigger = GetComponent<DialogTrigger>();
         
     }
 
@@ -59,5 +61,6 @@ public class inputscript : MonoBehaviour
     public void beforeGettingUp ()
     {
         //todo insert UI here
+        _dialogTrigger.TriggerDialog();
     }
 }
