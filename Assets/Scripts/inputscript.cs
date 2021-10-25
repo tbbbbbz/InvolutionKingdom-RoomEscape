@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class inputscript : MonoBehaviour
 {
     private Animator animator;
-    private Vector3 direction;
-    private Rigidbody rb;
     private float turn;
     public float turnSensitivity = 5f;
 
@@ -48,5 +44,17 @@ public class inputscript : MonoBehaviour
 
 
     }
+
+    public void startExploring()
+    {
+        animator.SetBool("Explore", true);
+    }
+
+
+    public void afterExplore ()
+    {
+        animator.SetBool("Explore", false);
+    }
+
 
 }
