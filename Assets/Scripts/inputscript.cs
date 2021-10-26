@@ -7,6 +7,13 @@ public class inputscript : MonoBehaviour
     private float turn;
     public float turnSensitivity = 5f;
     private DialogTrigger _dialogTrigger;
+    private bool isCatching;
+
+    public bool IsCatching
+    {
+        get { return isCatching; }
+
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +22,7 @@ public class inputscript : MonoBehaviour
         animator = GetComponent<Animator>();
         //Cursor.lockState = CursorLockMode.Locked;
         _dialogTrigger = GetComponent<DialogTrigger>();
+        isCatching = false;
         
         
     }
@@ -49,6 +57,11 @@ public class inputscript : MonoBehaviour
         GetComponentInParent<Transform>().localRotation = Quaternion.Euler(0, turn, 0);
         
 
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            animator.SetBool("Catch", true);
+        }
+
     }
 
     public void startExploring()
@@ -67,5 +80,15 @@ public class inputscript : MonoBehaviour
         //todo insert UI here
         _dialogTrigger.TriggerDialog();
     }
-    
+
+    public void duringCatching ()
+    {
+        isCatching = true;
+        animator.SetBool("Catch", false);
+    }
+
+    public void afterCatching ()
+    {
+        isCatching = false;
+    }
 }
