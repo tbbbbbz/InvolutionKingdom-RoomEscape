@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class inputscript : MonoBehaviour
 {
+    
     private Animator animator;
     private float turn;
     public float turnSensitivity = 5f;
@@ -10,15 +11,18 @@ public class inputscript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         animator = GetComponent<Animator>();
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         _dialogTrigger = GetComponent<DialogTrigger>();
+        
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         float moveV = Input.GetAxis("Vertical");
 
         bool hasMoveV = !Mathf.Approximately(moveV, 0);
@@ -43,7 +47,7 @@ public class inputscript : MonoBehaviour
 
         //transform.localRotation = Quaternion.Euler(0, turn, 0);
         GetComponentInParent<Transform>().localRotation = Quaternion.Euler(0, turn, 0);
-
+        
 
     }
 
@@ -63,4 +67,5 @@ public class inputscript : MonoBehaviour
         //todo insert UI here
         _dialogTrigger.TriggerDialog();
     }
+    
 }
