@@ -6,17 +6,30 @@ using UnityEngine.AI;
 
 public class CatAI : MonoBehaviour
 {
+    
+    public enum BehaviourState
+    {
+        HIDDEN,
+        JUMPING,
+        WANDERING,
+        FLEEING,
+    }
+
+
     private NavMeshAgent agent;
     private Animator animator;
     public GameObject[] waypoints;
     private int currWaypoint;
     public BehaviourState behaviourState;
+    private Rigidbody rb;
+    public inputscript player;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponentInChildren<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody>();
         currWaypoint = -1;
         behaviourState = BehaviourState.JUMPING;
         agent.enabled = false;
@@ -24,6 +37,14 @@ public class CatAI : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        switchBehaviourStates();
+        navToNextPoint();
+        setWalkingAnimationSpeed();
+        checkPlayersAction();
+    }
+
+    private void switchBehaviourStates()
     {
         switch (behaviourState)
         {
@@ -39,25 +60,21 @@ public class CatAI : MonoBehaviour
                 animator.SetBool("IsWalking", true);
                 break;
 
-        }
+            case BehaviourState.FLEEING:
+                animator.SetBool("IsFleeing", true);
+                break;
 
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-        {
-            agent.enabled = true;
-            behaviourState = BehaviourState.WANDERING;
         }
+    }
 
+    private void navToNextPoint()
+    {
         if (agent.enabled && agent.remainingDistance == 0 && !agent.pathPending)
         {
             setNextWaypoint();
         }
-        if (agent.speed != 0)
-        {
-            animator.SetFloat("IdleWalkRatio", agent.velocity.magnitude / agent.speed);
-        }
-        
-
     }
+
 
     private void setNextWaypoint()
     {
@@ -69,15 +86,28 @@ public class CatAI : MonoBehaviour
         {
                 currWaypoint = (currWaypoint + 1)%waypoints.Length;
                 agent.SetDestination(waypoints[currWaypoint].transform.position);
-
-
         }
     }
 
-    public enum BehaviourState
+    private void setWalkingAnimationSpeed()
     {
-        HIDDEN,
-        JUMPING,
-        WANDERING,
+        if (agent.speed != 0)
+        {
+            animator.SetFloat("IdleWalkRatio", agent.velocity.magnitude / agent.speed);
+        }
     }
+
+
+    private void checkPlayersAction ()
+    {
+        Vector3 playerPosition = player.gameObject.transform.position;
+    }
+
+    public void afterJumping()
+    {
+        agent.enabled = true;
+        behaviourState = BehaviourState.WANDERING;
+        rb.isKinematic = false;
+    }
+
 }

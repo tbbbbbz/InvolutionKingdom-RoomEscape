@@ -21,7 +21,7 @@ public class DialogManager : MonoBehaviour
     public void StartDialog(Dialog dialog)
     {
         animator.SetBool("Dialog_Open", true);
-        nameText.text = dialog.npcName;
+        nameText.text = dialog.CharacterName;
         _sentences.Clear();
         foreach (var sentence in dialog.sentences)
         {
