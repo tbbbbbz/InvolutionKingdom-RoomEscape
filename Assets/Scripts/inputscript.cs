@@ -8,11 +8,17 @@ public class inputscript : MonoBehaviour
     public float turnSensitivity = 5f;
     private DialogTrigger _dialogTrigger;
     private bool isCatching;
+    private bool isExploring;
 
     public bool IsCatching
     {
         get { return isCatching; }
 
+    }
+
+    public bool IsExploring
+    {
+        get { return isExploring; }
     }
 
     // Start is called before the first frame update
@@ -66,12 +72,14 @@ public class inputscript : MonoBehaviour
 
     public void startExploring()
     {
+        isExploring = true;
         animator.SetBool("Explore", true);
     }
 
 
     public void afterExplore ()
     {
+        isExploring = false;
         animator.SetBool("Explore", false);
     }
 
