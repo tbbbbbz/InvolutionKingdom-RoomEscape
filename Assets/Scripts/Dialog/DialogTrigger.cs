@@ -10,4 +10,9 @@ public class DialogTrigger : MonoBehaviour
     {
         FindObjectOfType<DialogManager>().StartDialog(dialog);
     }
+
+    public void EndDialog()
+    {
+        FindObjectOfType<DialogManager>().clearAndEndDialog();
+    }
 }

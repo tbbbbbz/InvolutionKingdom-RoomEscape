@@ -9,6 +9,7 @@ public class inputscript : MonoBehaviour
     private DialogTrigger _dialogTrigger;
     private bool isCatching;
     private bool isExploring;
+    private bool inMiddleOfExploring;
 
     public bool IsCatching
     {
@@ -19,6 +20,11 @@ public class inputscript : MonoBehaviour
     public bool IsExploring
     {
         get { return isExploring; }
+    }
+
+    public bool InMiddleOfExploring
+    {
+        get { return inMiddleOfExploring; }
     }
 
     // Start is called before the first frame update
@@ -76,16 +82,20 @@ public class inputscript : MonoBehaviour
         animator.SetBool("Explore", true);
     }
 
+    public void middleOfExploring()
+    {
+        inMiddleOfExploring = true;
+    }
 
     public void afterExplore ()
     {
         isExploring = false;
+        inMiddleOfExploring = false;
         animator.SetBool("Explore", false);
     }
 
     public void beforeGettingUp ()
     {
-        //todo insert UI here
         _dialogTrigger.TriggerDialog();
     }
 

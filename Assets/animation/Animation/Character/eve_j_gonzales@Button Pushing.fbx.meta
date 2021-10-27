@@ -67,6 +67,14 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.3152174
+        functionName: middleOfExploring
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 8a4c849ee3db44d5ca3e9ae8ce736cc9,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

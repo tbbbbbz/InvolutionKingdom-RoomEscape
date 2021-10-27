@@ -20,15 +20,18 @@ public class DialogManager : MonoBehaviour
 
     public void StartDialog(Dialog dialog)
     {
-        animator.SetBool("Dialog_Open", true);
-        nameText.text = dialog.CharacterName;
-        _sentences.Clear();
-        foreach (var sentence in dialog.sentences)
+        if (dialog != null)
         {
-            _sentences.Enqueue(sentence);
-        }
+            animator.SetBool("Dialog_Open", true);
+            nameText.text = dialog.CharacterName;
+            _sentences.Clear();
+            foreach (var sentence in dialog.sentences)
+            {
+                _sentences.Enqueue(sentence);
+            }
 
-        DisplayNextSentence();
+            DisplayNextSentence();
+        }
     }
 
     private void Update()
