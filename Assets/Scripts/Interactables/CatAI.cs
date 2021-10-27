@@ -63,10 +63,12 @@ public class CatAI : InteractableObject
             case BehaviourState.WANDERING:
                 animator.SetBool("IsWalking", true);
                 animator.SetBool("IsFleeing", false);
+                agent.speed = 1f;
                 break;
 
             case BehaviourState.FLEEING:
                 animator.SetBool("IsFleeing", true);
+                agent.speed = 2f;
                 if (Time.realtimeSinceStartup - startFleeTimeStamp >= fleetTime)
                 {
                     behaviourState = BehaviourState.WANDERING;
@@ -132,11 +134,4 @@ public class CatAI : InteractableObject
         rb.isKinematic = false;
         isInteractable = true;
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        base.OnTriggerExit(other);
-        behaviourState = BehaviourState.WANDERING;
-    }
-
 }
