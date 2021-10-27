@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class drawerOpen : InteractableObject
 {
-    [SerializeField] private Animator animator = null;
+    private Animator animator;
 
 
     private void Start()
