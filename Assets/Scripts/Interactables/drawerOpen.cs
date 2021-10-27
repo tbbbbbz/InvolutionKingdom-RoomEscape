@@ -2,58 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class drawerOpen : MonoBehaviour
+public class drawerOpen : InteractableObject
 {
     [SerializeField] private Animator animator = null;
 
-    [SerializeField] private bool openTrigger = false;
+    private DialogTrigger dialogTrigger;
 
-    private DialogManager dm;
-    private bool playerNearBy;
-    private GameObject player;
-    private inputscript playerInput;
 
     private void Start()
     {
-        dm = FindObjectOfType<DialogManager>();
-        playerNearBy = false;
+        base.Start();
         animator = GetComponent<Animator>();
-        playerInput = FindObjectOfType<inputscript>();
     }
 
     private void Update()
     {
-        if (playerNearBy && Input.GetKeyDown(KeyCode.O) && !openTrigger)
+        if (playerNearBy && Input.GetKeyDown(KeyCode.O) && isInteractable)
         {
             playerInput.startExploring();
-            openTrigger = true;
+            isInteractable = true;
         }
-        if (!playerInput.IsExploring && openTrigger)
+        if (playerNearBy && playerInput.InMiddleOfExploring && isInteractable)
         {
             
             animator.SetBool("Open", true);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!openTrigger && other.CompareTag("Player"))
-        {
-            Dialog dialog = new Dialog();
-            dialog.sentences = new string[] {"press 'O' to open drawer"};
-            dm.StartDialog(dialog);
-            playerNearBy = true;
-            player = other.gameObject;
-        }
-
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerNearBy = false;
-            dm.clearAndEndDialog();
         }
     }
 
