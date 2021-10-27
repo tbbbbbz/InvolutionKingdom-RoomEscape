@@ -70,4 +70,10 @@ public class DialogManager : MonoBehaviour
     }
 
     // Update is called once per frame
+
+    public void clearAndEndDialog()
+    {
+        _sentences = new Queue<string>();
+        DisplayNextSentence();
+    }
 }
