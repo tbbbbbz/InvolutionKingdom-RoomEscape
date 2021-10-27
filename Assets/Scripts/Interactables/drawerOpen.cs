@@ -6,8 +6,6 @@ public class drawerOpen : InteractableObject
 {
     [SerializeField] private Animator animator = null;
 
-    private DialogTrigger dialogTrigger;
-
 
     private void Start()
     {
@@ -20,6 +18,7 @@ public class drawerOpen : InteractableObject
         if (playerNearBy && Input.GetKeyDown(KeyCode.O) && isInteractable)
         {
             playerInput.startExploring();
+            dialogTrigger.EndDialog();
         }
         if (playerNearBy && playerInput.InMiddleOfExploring && isInteractable)
         {
