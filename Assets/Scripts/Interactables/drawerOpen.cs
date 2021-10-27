@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class drawerOpen : InteractableObject
 {
-    [SerializeField] private Animator animator = null;
-
-    private DialogTrigger dialogTrigger;
+    private Animator animator;
 
 
     private void Start()
@@ -20,12 +18,13 @@ public class drawerOpen : InteractableObject
         if (playerNearBy && Input.GetKeyDown(KeyCode.O) && isInteractable)
         {
             playerInput.startExploring();
-            isInteractable = true;
+            dialogTrigger.EndDialog();
         }
         if (playerNearBy && playerInput.InMiddleOfExploring && isInteractable)
         {
             
             animator.SetBool("Open", true);
+            isInteractable = false;
         }
     }
 

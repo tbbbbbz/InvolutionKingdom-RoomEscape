@@ -69,11 +69,6 @@ public class inputscript : MonoBehaviour
         GetComponentInParent<Transform>().localRotation = Quaternion.Euler(0, turn, 0);
         
 
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            animator.SetBool("Catch", true);
-        }
-
     }
 
     public void startExploring()
@@ -97,6 +92,11 @@ public class inputscript : MonoBehaviour
     public void beforeGettingUp ()
     {
         _dialogTrigger.TriggerDialog();
+    }
+
+    public void startCatching ()
+    {
+        animator.SetBool("Catch", true);
     }
 
     public void duringCatching ()

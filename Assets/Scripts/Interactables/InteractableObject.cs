@@ -9,7 +9,7 @@ public abstract class InteractableObject : MonoBehaviour
     protected bool isInteractable;
 
 
-    private DialogTrigger dialogTrigger;
+    protected DialogTrigger dialogTrigger;
     private bool hasTriggerredDialog;
 
     protected void Start()

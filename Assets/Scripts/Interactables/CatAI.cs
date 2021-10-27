@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class CatAI : MonoBehaviour
+public class CatAI : InteractableObject
 {
     
     public enum BehaviourState
@@ -23,16 +23,20 @@ public class CatAI : MonoBehaviour
     public BehaviourState behaviourState;
     private Rigidbody rb;
     public inputscript player;
+    public float fleetTime = 2f;
+    private float startFleeTimeStamp;
 
     // Start is called before the first frame update
     void Start()
     {
+        base.Start();
         agent = GetComponentInChildren<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         currWaypoint = -1;
         behaviourState = BehaviourState.HIDDEN;
         agent.enabled = false;
+        isInteractable = false;
     }
 
     // Update is called once per frame
@@ -58,10 +62,17 @@ public class CatAI : MonoBehaviour
 
             case BehaviourState.WANDERING:
                 animator.SetBool("IsWalking", true);
+                animator.SetBool("IsFleeing", false);
+                agent.speed = 1f;
                 break;
 
             case BehaviourState.FLEEING:
                 animator.SetBool("IsFleeing", true);
+                agent.speed = 2f;
+                if (Time.realtimeSinceStartup - startFleeTimeStamp >= fleetTime)
+                {
+                    behaviourState = BehaviourState.WANDERING;
+                }
                 break;
 
         }
@@ -100,7 +111,15 @@ public class CatAI : MonoBehaviour
 
     private void checkPlayersAction ()
     {
-        Vector3 playerPosition = player.gameObject.transform.position;
+        if (playerNearBy && Input.GetKeyDown(KeyCode.C))
+        {
+            player.startCatching();
+        }
+        if (playerNearBy && player.IsCatching)
+        {
+            behaviourState = BehaviourState.FLEEING;
+            startFleeTimeStamp = Time.realtimeSinceStartup;
+        }
     }
 
     public void startJumping ()
@@ -113,6 +132,6 @@ public class CatAI : MonoBehaviour
         agent.enabled = true;
         behaviourState = BehaviourState.WANDERING;
         rb.isKinematic = false;
+        isInteractable = true;
     }
-
 }
