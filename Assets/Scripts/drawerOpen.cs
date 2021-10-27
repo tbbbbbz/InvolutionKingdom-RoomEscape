@@ -19,4 +19,9 @@ public class drawerOpen : MonoBehaviour
             }
         }
     }
+
+    public void onOpen()
+    {
+        FindObjectOfType<CatAI>().behaviourState = CatAI.BehaviourState.JUMPING;
+    }
 }
