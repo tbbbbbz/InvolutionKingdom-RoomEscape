@@ -20,12 +20,12 @@ public class drawerOpen : InteractableObject
         if (playerNearBy && Input.GetKeyDown(KeyCode.O) && isInteractable)
         {
             playerInput.startExploring();
-            isInteractable = true;
         }
         if (playerNearBy && playerInput.InMiddleOfExploring && isInteractable)
         {
             
             animator.SetBool("Open", true);
+            isInteractable = false;
         }
     }
 
