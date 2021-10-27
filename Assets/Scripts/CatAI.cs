@@ -31,7 +31,7 @@ public class CatAI : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         currWaypoint = -1;
-        behaviourState = BehaviourState.JUMPING;
+        behaviourState = BehaviourState.HIDDEN;
         agent.enabled = false;
     }
 
@@ -101,6 +101,11 @@ public class CatAI : MonoBehaviour
     private void checkPlayersAction ()
     {
         Vector3 playerPosition = player.gameObject.transform.position;
+    }
+
+    public void startJumping ()
+    {
+        behaviourState = BehaviourState.JUMPING;
     }
 
     public void afterJumping()
