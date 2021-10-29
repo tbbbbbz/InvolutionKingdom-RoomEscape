@@ -7,21 +7,22 @@ public abstract class SimpleOpener : InteractableObject
 {
     private Animator animator;
 
-
-    private void Start()
+    protected void Start()
     {
         base.Start();
         animator = GetComponent<Animator>();
     }
 
+    protected abstract void playersAction();
+
     private void Update()
     {
         if (playerNearBy && Input.GetKeyDown(KeyCode.O) && isInteractable)
         {
-            playerInput.startExploring();
+            playersAction();
             dialogTrigger.EndDialog();
         }
-        if (playerNearBy && playerInput.InMiddleOfExploring && isInteractable)
+        if (playerNearBy && playerInput.InMiddleOfAction && isInteractable)
         {
 
             animator.SetBool("Open", true);

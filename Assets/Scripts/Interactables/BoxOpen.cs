@@ -13,4 +13,9 @@ public class BoxOpen : SimpleOpener
         FindObjectOfType<BowlFiller>().isInteractable = true;
     }
 
+    protected override void playersAction()
+    {
+        playerInput.startExploring();
+    }
+    
 }

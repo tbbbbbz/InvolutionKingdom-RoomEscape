@@ -17,10 +17,12 @@ public class BowlFiller : InteractableObject
             playerInput.startExploring();
             dialogTrigger.EndDialog();
         }
-        if (playerNearBy && playerInput.InMiddleOfExploring && isInteractable)
+        if (playerNearBy && playerInput.InMiddleOfAction && isInteractable)
         {
             this.gameObject.transform.Find("BrownSugar").gameObject.SetActive(true);
             isInteractable = false;
         }
     }
 }
+
+

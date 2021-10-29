@@ -10,8 +10,7 @@ public class inputscript : MonoBehaviour
     private DialogTrigger _dialogTrigger;
     private bool isCatching;
     private bool isExploring;
-    private bool inMiddleOfExploring;
-    public bool hasKeyToTheDoor;
+    private bool inMiddleOfAction;
 
     public bool IsCatching
     {
@@ -31,9 +30,9 @@ public class inputscript : MonoBehaviour
         get { return isExploring; }
     }
 
-    public bool InMiddleOfExploring
+    public bool InMiddleOfAction
     {
-        get { return inMiddleOfExploring; }
+        get { return inMiddleOfAction; }
     }
 
     // Start is called before the first frame update
@@ -45,7 +44,6 @@ public class inputscript : MonoBehaviour
         _dialogTrigger = GetComponent<DialogTrigger>();
         isCatching = false;
         hasCatFood = false;
-        hasKeyToTheDoor = false;
     }
 
     // Update is called once per frame
@@ -88,13 +86,13 @@ public class inputscript : MonoBehaviour
 
     public void middleOfExploring()
     {
-        inMiddleOfExploring = true;
+        inMiddleOfAction = true;
     }
 
     public void afterExplore ()
     {
         isExploring = false;
-        inMiddleOfExploring = false;
+        inMiddleOfAction = false;
         animator.SetBool("Explore", false);
     }
 
