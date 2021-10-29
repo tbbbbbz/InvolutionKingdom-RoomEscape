@@ -13,6 +13,8 @@ public class CatAI : InteractableObject
         JUMPING,
         WANDERING,
         FLEEING,
+        APPROACHING_FOOD,
+        EATING,
     }
 
 
@@ -25,6 +27,8 @@ public class CatAI : InteractableObject
     public inputscript player;
     public float fleetTime = 2f;
     private float startFleeTimeStamp;
+    public GameObject foodPlate;
+    public bool isCatchable;
 
     // Start is called before the first frame update
     void Start()
@@ -43,9 +47,6 @@ public class CatAI : InteractableObject
     void Update()
     {
         switchBehaviourStates();
-        navToNextPoint();
-        setWalkingAnimationSpeed();
-        checkPlayersAction();
     }
 
     private void switchBehaviourStates()
@@ -64,6 +65,14 @@ public class CatAI : InteractableObject
                 animator.SetBool("IsWalking", true);
                 animator.SetBool("IsFleeing", false);
                 agent.speed = 1f;
+
+                navToNextPoint();
+                setWalkingAnimationSpeed();
+                checkPlayersAction();
+                if (foodPlate.gameObject.transform.Find("BrownSugar").gameObject.active)
+                {
+                    behaviourState = BehaviourState.APPROACHING_FOOD;
+                }
                 break;
 
             case BehaviourState.FLEEING:
@@ -72,6 +81,44 @@ public class CatAI : InteractableObject
                 if (Time.realtimeSinceStartup - startFleeTimeStamp >= fleetTime)
                 {
                     behaviourState = BehaviourState.WANDERING;
+                }
+
+                navToNextPoint();
+                break;
+
+            case BehaviourState.APPROACHING_FOOD:
+                agent.SetDestination(foodPlate.transform.position);
+                agent.stoppingDistance = 0.3f;
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    behaviourState = BehaviourState.EATING;
+                }
+                break;
+
+            case BehaviourState.EATING:
+                animator.SetBool("Eating", true);
+                if (playerNearBy && Input.GetKeyDown(KeyCode.C))
+                {
+                    player.startCatching();
+                }
+                if (playerNearBy && player.IsCatching)
+                {
+                    Dialog dialog = new Dialog();
+                    dialog.sentences = new string[] { "Catched the cat, and got the key hung on its neck" };
+                    FindObjectOfType<DialogManager>().StartDialog(dialog);
+                    isInteractable = false;
+                    player.hasKeyToTheDoor = true;
+                    this.gameObject.transform.Find("cat_armature").Find("root")
+                        .Find("MCH_back.001")
+                        .Find("DEF_back.001")
+                        .Find("MCH_back.002")
+                        .Find("DEF_back.002")
+                        .Find("MCH_back.003")
+                        .Find("DEF_back.003")
+                        .Find("MCH_back.004")
+                        .Find("DEF_back.004")
+                        .Find("MCH_neck")
+                        .Find("Ring").gameObject.SetActive(false);
                 }
                 break;
 

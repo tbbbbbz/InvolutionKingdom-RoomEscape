@@ -11,6 +11,7 @@ public class inputscript : MonoBehaviour
     private bool isCatching;
     private bool isExploring;
     private bool inMiddleOfExploring;
+    public bool hasKeyToTheDoor;
 
     public bool IsCatching
     {
@@ -44,7 +45,7 @@ public class inputscript : MonoBehaviour
         _dialogTrigger = GetComponent<DialogTrigger>();
         isCatching = false;
         hasCatFood = false;
-        
+        hasKeyToTheDoor = false;
     }
 
     // Update is called once per frame
