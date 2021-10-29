@@ -7,7 +7,7 @@ public abstract class SimpleOpener : InteractableObject
 {
     private Animator animator;
 
-    private void Start()
+    protected void Start()
     {
         base.Start();
         animator = GetComponent<Animator>();

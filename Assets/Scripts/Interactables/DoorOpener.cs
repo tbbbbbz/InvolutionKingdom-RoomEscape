@@ -3,7 +3,16 @@ using System.Collections;
 
 public class DoorOpener : SimpleOpener
 {
-    public CanvasGroup endingCanvasCanvasGroup;
+    public CanvasGroup endingCanvasCanvasGroup = null;
+
+    private void Start()
+    {
+        base.Start();
+        if (gameObject.tag.Equals("Exit"))
+        {
+            isInteractable = false;
+        }
+    }
 
     protected override void playersAction()
     {
