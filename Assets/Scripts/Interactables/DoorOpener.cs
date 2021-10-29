@@ -3,6 +3,7 @@ using System.Collections;
 
 public class DoorOpener : SimpleOpener
 {
+    public CanvasGroup endingCanvasCanvasGroup;
 
     protected override void playersAction()
     {
@@ -11,10 +12,10 @@ public class DoorOpener : SimpleOpener
 
     public override void onOpen()
     {
-        if (this.CompareTag("Exit"))
+        if (gameObject.tag.Equals("Exit"))
         {
             EventManager.TriggerEvent<VictoryEvent, Vector3>(FindObjectOfType<inputscript>().gameObject.transform.position);
-
+            endingCanvasCanvasGroup.alpha = 1f;
         }
     }
 }
