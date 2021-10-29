@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class inputscript : MonoBehaviour
 {
+    private bool hasCatFood;
     
     private Animator animator;
     private float turn;
@@ -14,6 +15,13 @@ public class inputscript : MonoBehaviour
     public bool IsCatching
     {
         get { return isCatching; }
+
+    }
+
+    public bool HasCatFood
+    {
+        get { return HasCatFood; }
+        set { hasCatFood = value; }
 
     }
 
@@ -35,7 +43,7 @@ public class inputscript : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
         _dialogTrigger = GetComponent<DialogTrigger>();
         isCatching = false;
-        
+        hasCatFood = false;
         
     }
 

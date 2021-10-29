@@ -6,7 +6,7 @@ public abstract class InteractableObject : MonoBehaviour
 {
     protected bool playerNearBy;
     protected inputscript playerInput;
-    protected bool isInteractable;
+    public bool isInteractable;
 
 
     protected DialogTrigger dialogTrigger;
