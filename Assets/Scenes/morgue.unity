@@ -7544,7 +7544,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 577414336}
   m_LocalRotation: {x: 0.30070576, y: 0, z: 0, w: 0.953717}
-  m_LocalPosition: {x: 1.7990702, y: 2.508933, z: -15.900535}
+  m_LocalPosition: {x: 1.7980404, y: 2.508933, z: -15.900535}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -10782,7 +10782,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401787400}
   m_LocalRotation: {x: 0.30070576, y: -0, z: -0, w: 0.953717}
-  m_LocalPosition: {x: 1.1361895, y: 0.82210445, z: -14.453713}
+  m_LocalPosition: {x: 1.1351595, y: 0.82210445, z: -14.453713}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1253776492}
@@ -12657,6 +12657,77 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1770925533 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 187556, guid: 0caf0d4823fcc7a4bb64144f3b4469fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1538730609}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1770925534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770925533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f950f03b753ed4c39ae79a9aae174fcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialog:
+    sentences:
+    - Looks like there is a book on the table. Let me check if there is any information
+      on it.
+    - Press "O" to read the book.
+    CharacterName: Eve
+--- !u!114 &1770925535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770925533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1a716663789a4a289f05fcffe13c097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
+  bookContentTrigger: {fileID: 1770925537}
+--- !u!65 &1770925536
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770925533}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2519207, y: 0.9703003, z: 1.168259}
+  m_Center: {x: -0.07813954, y: 0.4781552, z: -0.016808987}
+--- !u!114 &1770925537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770925533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9fc220ef71f4e8b8d1634c3ed5b12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialog:
+    sentences:
+    - "The bloody words on the book reads:  \nDamn it ! Another person got lost today.
+      If I can't find the way out soon. Next one would be me. No way ! I will find
+      a way out. The last place i haven't seached is the:"
+    - 'Looks like the corner was torn apart. The remaining part must be in this building.
+      I need to find it '
+    CharacterName: EVE
 --- !u!1001 &1772514301
 PrefabInstance:
   m_ObjectHideFlags: 0
