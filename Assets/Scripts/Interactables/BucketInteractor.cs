@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BookReader : InteractableObject
+public class BucketInteractor : InteractableObject
 {
     // Start is called before the first frame update
-    public DialogTrigger bookContentTrigger;
-    public InteractableObject bucket;
+    public DialogTrigger paperConerContent;
+    public SimpleOpener drawer;
 
     void Start()
     {
         base.Start();
-        isInteractable = true;
+        isInteractable = false;
     }
 
     // Update is called once per frame
@@ -21,9 +21,8 @@ public class BookReader : InteractableObject
         {
             playerInput.startExploring();
             dialogTrigger.EndDialog();
-            isInteractable = false;
-            bookContentTrigger.TriggerDialog();
-            bucket.SetInteractive(true);
+            paperConerContent.TriggerDialog();
+            drawer.SetInteractive(true);
         }
     }
 }

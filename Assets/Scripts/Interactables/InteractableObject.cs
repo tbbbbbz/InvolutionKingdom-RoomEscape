@@ -29,7 +29,6 @@ public abstract class InteractableObject : MonoBehaviour
             playerNearBy = true;
             hasTriggerredDialog = true;
         }
-
     }
 
     protected void OnTriggerExit(Collider other)
@@ -42,5 +41,10 @@ public abstract class InteractableObject : MonoBehaviour
                 dialogTrigger.EndDialog();
             }
         }
+    }
+
+    public void SetInteractive(bool enableInteractive)
+    {
+        this.isInteractable = enableInteractive;
     }
 }
