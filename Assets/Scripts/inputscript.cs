@@ -74,7 +74,7 @@ public class inputscript : MonoBehaviour
 
         //transform.localRotation = Quaternion.Euler(0, turn, 0);
         GetComponentInParent<Transform>().localRotation = Quaternion.Euler(0, turn, 0);
-        
+
 
     }
 
