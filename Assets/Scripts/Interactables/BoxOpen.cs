@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class BoxOpen : SimpleOpener
 {
-    void Start()
-    {
-        base.Start();
-        isInteractable = false;
-    }
 
     public override void onOpen()
     {

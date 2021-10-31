@@ -94,6 +94,7 @@ public class CatAI : InteractableObject
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {
                     behaviourState = BehaviourState.EATING;
+                    isInteractable = true;
                 }
                 break;
 
@@ -121,6 +122,8 @@ public class CatAI : InteractableObject
                         .Find("DEF_back.004")
                         .Find("MCH_neck")
                         .Find("Ring").gameObject.SetActive(false);
+
+                    isInteractable = false;
                 }
                 break;
 
@@ -181,6 +184,6 @@ public class CatAI : InteractableObject
         agent.enabled = true;
         behaviourState = BehaviourState.WANDERING;
         rb.isKinematic = false;
-        isInteractable = true;
     }
+
 }
