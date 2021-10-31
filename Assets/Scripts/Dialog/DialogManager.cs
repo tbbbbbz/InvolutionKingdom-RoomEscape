@@ -12,7 +12,6 @@ public class DialogManager : MonoBehaviour
 
     public Animator animator;
 
-    // Start is called before the first frame update
     void Awake()
     {
         _sentences = new Queue<string>();
@@ -25,12 +24,14 @@ public class DialogManager : MonoBehaviour
             animator.SetBool("Dialog_Open", true);
             nameText.text = dialog.CharacterName;
             _sentences.Clear();
-            foreach (var sentence in dialog.sentences)
-            {
-                _sentences.Enqueue(sentence);
-            }
-
+            Action<string> action =
+                new Action<string>(sentence => _sentences.Enqueue(sentence));
+            Array.ForEach(dialog.sentences, action);
             DisplayNextSentence();
+        }
+        else
+        {
+            throw new ArgumentException("Dialog is null");
         }
     }
 
@@ -45,7 +46,6 @@ public class DialogManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        Debug.Log("Display Next Sentence");
         if (_sentences.Count == 0)
         {
             EndDialog();
@@ -63,20 +63,21 @@ public class DialogManager : MonoBehaviour
         foreach (var letter in sentence.ToCharArray())
         {
             dialogText.text += letter;
-            yield return null;
+            yield return new WaitForSeconds(0.02f);
         }
     }
 
     private void EndDialog()
     {
         animator.SetBool("Dialog_Open", false);
+        _sentences.Clear();
     }
 
     // Update is called once per frame
 
     public void clearAndEndDialog()
     {
-        _sentences = new Queue<string>();
+        _sentences.Clear();
         DisplayNextSentence();
     }
 }
