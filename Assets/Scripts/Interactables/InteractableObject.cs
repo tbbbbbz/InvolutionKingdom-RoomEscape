@@ -23,11 +23,16 @@ public abstract class InteractableObject : MonoBehaviour
 
     protected void OnTriggerEnter(Collider other)
     {
-        if (isInteractable && other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            dialogTrigger.TriggerDialog();
             playerNearBy = true;
-            hasTriggerredDialog = true;
+
+            if (isInteractable)
+            {
+                dialogTrigger.TriggerDialog();
+
+                hasTriggerredDialog = true;
+            }
         }
     }
 

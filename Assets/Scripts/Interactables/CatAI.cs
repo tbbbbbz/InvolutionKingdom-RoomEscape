@@ -94,14 +94,19 @@ public class CatAI : InteractableObject
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {
                     behaviourState = BehaviourState.EATING;
-                    agent.enabled = false;
                     isInteractable = true;
+                    agent.speed = 0;
+                    rb.isKinematic = true;
+                    if (playerNearBy)
+                    {
+                        dialogTrigger.TriggerDialog();
+                    }
                 }
                 break;
 
             case BehaviourState.EATING:
                 animator.SetBool("Eating", true);
-                if (playerNearBy && Input.GetKeyDown(KeyCode.C))
+                if (isInteractable && playerNearBy && Input.GetKeyDown(KeyCode.C))
                 {
                     player.startCatching();
                 }
