@@ -94,6 +94,7 @@ public class CatAI : InteractableObject
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {
                     behaviourState = BehaviourState.EATING;
+                    agent.enabled = false;
                     isInteractable = true;
                 }
                 break;
