@@ -2,26 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class drawerOpen : SimpleOpener
+public class drawerOpen : MonoBehaviour
 {
-    public DialogTrigger onOpenInfo;
-    public SimpleOpener boxOpener;
+    public bool hasCat;
+    private Animator animator;
 
-    void Start()
+    private void Start()
     {
-        base.Start();
-        isInteractable = false;
+        animator = GetComponent<Animator>();
     }
 
-    protected override void playersAction()
+    public void panelButtonOnClick()
     {
-        playerInput.startExploring();
+        animator.SetBool("Open", true);
     }
 
-    public override void onOpen()
+    public void onOpen()
     {
-        FindObjectOfType<CatAI>().behaviourState = CatAI.BehaviourState.JUMPING;
-        onOpenInfo.TriggerDialog();
-        boxOpener.SetInteractive(true);
+        if (hasCat)
+        {
+            FindObjectOfType<CatAI>().behaviourState = CatAI.BehaviourState.JUMPING;
+        }
+        
     }
 }
