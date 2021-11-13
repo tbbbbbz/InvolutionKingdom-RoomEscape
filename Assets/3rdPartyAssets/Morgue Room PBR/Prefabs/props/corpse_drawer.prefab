@@ -92,6 +92,8 @@ GameObject:
   - component: {fileID: 483686}
   - component: {fileID: 3362154}
   - component: {fileID: 2326008}
+  - component: {fileID: 8055151908731531893}
+  - component: {fileID: 5544492655663298363}
   m_Layer: 0
   m_Name: corpse_drawer_door
   m_TagString: Untagged
@@ -162,6 +164,38 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &8055151908731531893
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128952}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 57bed956fa4694d4a9074bd37926093f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5544492655663298363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52fea697927364c2f9cd23c3ea8312db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasCat: 0
 --- !u!1 &130342
 GameObject:
   m_ObjectHideFlags: 0
