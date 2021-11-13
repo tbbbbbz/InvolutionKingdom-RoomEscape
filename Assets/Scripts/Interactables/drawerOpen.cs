@@ -22,6 +22,9 @@ public class drawerOpen : MonoBehaviour
         if (hasCat)
         {
             FindObjectOfType<CatAI>().behaviourState = CatAI.BehaviourState.JUMPING;
+        } else
+        {
+            FindObjectOfType<ZombieAI>().behaviourState = ZombieAI.BehaviourState.WALK;
         }
         
     }
