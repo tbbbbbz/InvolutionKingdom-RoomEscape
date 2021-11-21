@@ -22,7 +22,6 @@ public class BucketInteractor : InteractableObject
             playerInput.startExploring();
             dialogTrigger.EndDialog();
             paperConerContent.TriggerDialog();
-            drawer.SetInteractive(true);
         }
     }
 }
