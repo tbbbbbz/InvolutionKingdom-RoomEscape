@@ -931,8 +931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4c849ee3db44d5ca3e9ae8ce736cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSensitivity: 4
-  hasKeyToTheDoor: 0
+  turnSensitivity: 40
 --- !u!54 &1609569149359251651
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -69,7 +69,7 @@ public class inputscript : MonoBehaviour
         }
 
         float moveH = Input.GetAxis("Horizontal");
-        turn += moveH * turnSensitivity;
+        turn += moveH * turnSensitivity * Time.deltaTime;
 
 
         //transform.localRotation = Quaternion.Euler(0, turn, 0);
@@ -116,4 +116,6 @@ public class inputscript : MonoBehaviour
     {
         isCatching = false;
     }
+
+    
 }
