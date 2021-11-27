@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 735993311355067133}
   - component: {fileID: 735993311348872526}
   - component: {fileID: 2805425931837407362}
-  - component: {fileID: 7214546474860450907}
   - component: {fileID: 7833788371770642308}
+  - component: {fileID: 1886430692478851347}
   m_Layer: 0
   m_Name: chest_top
   m_TagString: Untagged
@@ -133,22 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3394478aada04d299ca311e7b3b68d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  box: {fileID: 0}
-  openTrigger: 0
---- !u!136 &7214546474860450907
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735993311348763771}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 1.5
-  m_Height: 0.40654388
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.20860846, z: 0.33972147}
+  isInteractable: 0
 --- !u!114 &7833788371770642308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,6 +150,19 @@ MonoBehaviour:
     sentences:
     - Press 'O' to open chest.
     CharacterName: 
+--- !u!65 &1886430692478851347
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735993311348763771}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1760232, y: 0.4065439, z: 1.0628815}
+  m_Center: {x: -0.000000022464404, y: 0.20860957, z: 0.716456}
 --- !u!1 &735993311348824137
 GameObject:
   m_ObjectHideFlags: 0
