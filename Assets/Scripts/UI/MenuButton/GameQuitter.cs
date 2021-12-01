@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameQuitter : MonoBehaviour
 {
-    void Update()
+    public void Update()
     {
         if (Input.GetKeyUp(KeyCode.X))
         {

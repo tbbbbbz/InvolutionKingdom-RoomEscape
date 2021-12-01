@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Exit
   - Obstacle
+  - Evil
   layers:
   - Default
   - TransparentFX
