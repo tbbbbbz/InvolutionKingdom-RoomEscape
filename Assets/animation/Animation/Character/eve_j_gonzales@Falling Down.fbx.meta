@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 428438c720f2d493abe56f923a0fe7d7
+guid: 192e712bef8474e84b135e0e0b94a092
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Getting Up-2
+    second: Falling Down
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,7 +35,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Getting Up-2
+      name: Falling Down
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
@@ -49,24 +49,16 @@ ModelImporter:
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 1
+      loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
+      keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
-      heightFromFeet: 0
+      heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0
-        functionName: beforeGettingUp
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 8a4c849ee3db44d5ca3e9ae8ce736cc9,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

@@ -11,6 +11,7 @@ public class inputscript : MonoBehaviour
     private bool isCatching;
     private bool isExploring;
     private bool inMiddleOfAction;
+    private bool firstGettingUp;
 
     public bool IsCatching
     {
@@ -44,6 +45,7 @@ public class inputscript : MonoBehaviour
         _dialogTrigger = GetComponent<DialogTrigger>();
         isCatching = false;
         hasCatFood = false;
+        firstGettingUp = true;
     }
 
     // Update is called once per frame
@@ -98,7 +100,12 @@ public class inputscript : MonoBehaviour
 
     public void beforeGettingUp ()
     {
-        _dialogTrigger.TriggerDialog();
+        if (firstGettingUp)
+        {
+            firstGettingUp = false;
+            _dialogTrigger.TriggerDialog();
+        }
+        animator.SetBool("Falling", false);
     }
 
     public void startCatching ()

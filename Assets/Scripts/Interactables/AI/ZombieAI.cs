@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class ZombieAI : MonoBehaviour
 {
     public GameObject player;
+    public HealthBarController healthBarController;
     public enum BehaviourState
     {
         IDLE,
@@ -57,6 +58,12 @@ public class ZombieAI : MonoBehaviour
         {
             behaviourState = BehaviourState.IDLE;
         }
+    }
+
+    public void attacking()
+    {
+        healthBarController.onTakeDamage(25);
+        player.GetComponent<Animator>().SetBool("Falling", true);
     }
 
 }

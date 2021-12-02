@@ -17,6 +17,7 @@ public class DrawersControlPanel : InteractableObject
         if (playerNearBy && Input.GetKeyDown(KeyCode.O))
         {
             canvas.SetActive(true);
+            dialogTrigger.EndDialog();
         }
     }
 
