@@ -22,7 +22,7 @@ public class StatueController : InteractableObject
         bool turnRight = Input.GetKeyDown(KeyCode.I);
         if (playerNearBy && !hasCommand && (turnLeft || turnRight))
         {
-            _targetRot *= Quaternion.AngleAxis(turnLeft ? -90:90, transform.up);
+            _targetRot *= Quaternion.AngleAxis(turnLeft ? -90 : 90, transform.up);
             playerInput.startExploring();
             hasCommand = true;
         }
@@ -31,7 +31,8 @@ public class StatueController : InteractableObject
         {
             rotating = true;
         }
-        if (rotating) {
+        if (rotating)
+        {
             transform.rotation = Quaternion.Lerp(transform.rotation, _targetRot, _rotationSpeed * Time.deltaTime);
         }
         if (transform.rotation == _targetRot)
