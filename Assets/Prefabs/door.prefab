@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 1670088762078320715}
   - component: {fileID: 7042359865171528677}
   - component: {fileID: 9098542229508111706}
-  - component: {fileID: 3261223598379696611}
+  - component: {fileID: 8836332877235805582}
   m_Layer: 0
   m_Name: door
   m_TagString: Untagged
@@ -147,8 +147,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 0
---- !u!136 &3261223598379696611
-CapsuleCollider:
+  endingCanvasCanvasGroup: {fileID: 0}
+--- !u!65 &8836332877235805582
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -157,10 +158,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.8473606
-  m_Height: 3.2870986
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.1435493, z: -0.3473606}
+  serializedVersion: 2
+  m_Size: {x: 1.3843721, y: 2.9519506, z: 0.7679844}
+  m_Center: {x: 0.044832934, y: 0.97597533, z: -0.56074226}
 --- !u!1001 &6419635116064610168
 PrefabInstance:
   m_ObjectHideFlags: 0
