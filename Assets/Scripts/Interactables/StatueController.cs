@@ -8,6 +8,7 @@ public class StatueController : InteractableObject
     private Quaternion _targetRot;
     private bool rotating;
     private bool hasCommand;
+    public bool headingDoor;
 
     private void Awake()
     {
@@ -39,6 +40,13 @@ public class StatueController : InteractableObject
         {
             hasCommand = false;
             rotating = false;
+        }
+        if (transform.eulerAngles.y < 20 && transform.eulerAngles.y > -20)
+        {
+            headingDoor = true;
+        } else
+        {
+            headingDoor = false;
         }
     }
 }

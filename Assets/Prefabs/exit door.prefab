@@ -72,8 +72,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialog:
     sentences:
-    - Press 'O' to open the door.
-    CharacterName: 
+    - I need to find a way to open the door.
+    CharacterName: Eve
 --- !u!114 &2097958240003845489
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -30,8 +30,6 @@ public class CatAI : InteractableObject
     public GameObject foodPlate;
     public bool isCatchable;
 
-    public DoorOpener exitDoor;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -116,7 +114,7 @@ public class CatAI : InteractableObject
                     dialog.sentences = new string[] { "Catched the cat, and got the key hung on its neck" };
                     FindObjectOfType<DialogManager>().StartDialog(dialog);
                     isInteractable = false;
-                    exitDoor.isInteractable = true;
+                    player.hasKey = true;
                     this.gameObject.transform.Find("cat_armature").Find("root")
                         .Find("MCH_back.001")
                         .Find("DEF_back.001")

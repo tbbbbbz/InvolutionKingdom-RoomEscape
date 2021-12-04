@@ -12,6 +12,7 @@ public class inputscript : MonoBehaviour
     private bool isExploring;
     private bool inMiddleOfAction;
     private bool firstGettingUp;
+    public bool hasKey;
 
     public bool IsCatching
     {
@@ -46,6 +47,7 @@ public class inputscript : MonoBehaviour
         isCatching = false;
         hasCatFood = false;
         firstGettingUp = true;
+        hasKey = false;
     }
 
     // Update is called once per frame

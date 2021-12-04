@@ -11,9 +11,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.8934385
-  m_Height: 3.4727373
+  m_Height: 2.4934506
   m_Direction: 1
-  m_Center: {x: -0.10852538, y: 1.1017723, z: -0.078642376}
+  m_Center: {x: -0.10852538, y: 0.612129, z: -0.078642376}
 --- !u!136 &4204271493424516332
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -24,10 +24,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1.3763916
+  m_Radius: 1.9620845
   m_Height: 7.941169
   m_Direction: 1
-  m_Center: {x: 0.000000007849366, y: 3.4705842, z: 0.8763911}
+  m_Center: {x: 0, y: 3.4705842, z: 0}
 --- !u!114 &5464683910986007018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,6 +58,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInteractable: 0
   _rotationSpeed: 5
+  headingDoor: 0
 --- !u!1001 &8445879104311961264
 PrefabInstance:
   m_ObjectHideFlags: 0
