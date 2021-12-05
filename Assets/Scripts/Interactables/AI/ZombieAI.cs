@@ -42,7 +42,6 @@ public class ZombieAI : MonoBehaviour
                 break;
             case BehaviourState.ATTACK:
                 behaviourState = BehaviourState.IDLE;
-                EventManager.TriggerEvent<AttackPlayerEvent, Vector3>(transform.position);
                 break;
 
         }
@@ -51,10 +50,11 @@ public class ZombieAI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && behaviourState != BehaviourState.ATTACK)
         {
             behaviourState = BehaviourState.ATTACK;
             animator.Play("Attack");
+            EventManager.TriggerEvent<AttackPlayerEvent, Vector3>(transform.position);
         } else if (other.CompareTag("Obstacle"))
         {
             behaviourState = BehaviourState.IDLE;
