@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PotCollidingGroundReporter : MonoBehaviour
-{
+{   /*
     void OnCollisionEnter(Collision c)
     {
 
@@ -21,4 +21,5 @@ public class PotCollidingGroundReporter : MonoBehaviour
         //						
         //				}
     }
+    */
 }

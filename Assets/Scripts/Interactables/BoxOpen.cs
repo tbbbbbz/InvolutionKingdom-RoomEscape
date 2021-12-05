@@ -12,6 +12,7 @@ public class BoxOpen : SimpleOpener
         dialog.sentences = new string[] {"found cat food!"};
         FindObjectOfType<DialogManager>().StartDialog(dialog);
         FindObjectOfType<BowlFiller>().isInteractable = true;
+        EventManager.TriggerEvent<OpenBoxEvent, Vector3>(transform.position);
     }
 
     protected override void playersAction()

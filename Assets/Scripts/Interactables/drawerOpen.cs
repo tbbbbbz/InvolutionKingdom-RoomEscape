@@ -19,6 +19,8 @@ public class drawerOpen : MonoBehaviour
 
     public void onOpen()
     {
+        EventManager.TriggerEvent<OpenCabinetEvent, Vector3>(transform.position);
+
         if (hasCat)
         {
             FindObjectOfType<CatAI>().behaviourState = CatAI.BehaviourState.JUMPING;

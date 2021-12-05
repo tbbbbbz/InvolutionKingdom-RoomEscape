@@ -188,6 +188,7 @@ public class CatAI : InteractableObject
         agent.enabled = true;
         behaviourState = BehaviourState.WANDERING;
         rb.isKinematic = false;
+        EventManager.TriggerEvent<TouchCatEvent, GameObject>(gameObject);
     }
 
 }
