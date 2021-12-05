@@ -25,6 +25,12 @@ public class StatueController : InteractableObject
         {
             _targetRot *= Quaternion.AngleAxis(turnLeft ? -90 : 90, transform.up);
             playerInput.startExploring();
+
+            if (!hasCommand)
+            {
+                EventManager.TriggerEvent<PotCollidesGroundEvent, Vector3>(transform.position);
+            }
+
             hasCommand = true;
         }
 

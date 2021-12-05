@@ -3,4 +3,5 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PotCollidesGroundEvent : UnityEvent<Vector3> { }
+public class DropBloodEvent : UnityEvent<Vector3> { }
+

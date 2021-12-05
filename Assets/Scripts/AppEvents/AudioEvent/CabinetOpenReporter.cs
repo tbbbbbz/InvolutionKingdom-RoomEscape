@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CabinetOpenReporter : MonoBehaviour
 {
+    /*
     void OnCollisionEnter(Collision c)
     {
-
+        
         if (c.impulse.magnitude > 0.25f)
         {
             //we'll just use the first contact point for simplicity
@@ -21,4 +22,5 @@ public class CabinetOpenReporter : MonoBehaviour
         //						
         //				}
     }
+    */
 }

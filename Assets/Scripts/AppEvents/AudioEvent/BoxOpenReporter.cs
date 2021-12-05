@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BoxOpenReporter : MonoBehaviour
 {
+    /*
     void OnCollisionEnter(Collision c)
     {
 
@@ -21,4 +22,5 @@ public class BoxOpenReporter : MonoBehaviour
         //						
         //				}
     }
+    */
 }

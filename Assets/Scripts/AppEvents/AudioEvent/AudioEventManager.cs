@@ -7,92 +7,118 @@ public class AudioEventManager : MonoBehaviour
 {
     public EventSound3D eventSound3DPrefab;
 
+    public AudioClip[] attackPlayerAudio = null;
     public AudioClip victoryAudio;
     public AudioClip openDoorAudio;
     public AudioClip openCabinetAudio;
     public AudioClip openBoxAudio;
+    public AudioClip potCollidesGroundAudio;
+    public AudioClip dropBloodAudio;
     public AudioClip collideBasketAudio;
     public AudioClip collideBarrelAudio;
     public AudioClip collideBedAudio;
     public AudioClip collideDeskChairAudio;
     public AudioClip collideWallAudio;
-    public AudioClip potCollidesGroundAudio;
     public AudioClip touchNotebookAudio;
     public AudioClip touchScrollAudio;
     public AudioClip touchCatAudio;
-    public AudioClip touchZombieAudio;
+    // public AudioClip touchZombieAudio;
 
+    private UnityAction<Vector3> attackPlayerEventListener;
     private UnityAction<Vector3> victoryEventListener;
     private UnityAction<Vector3> openDoorEventListener;
     private UnityAction<Vector3> openCabinetEventListener;
     private UnityAction<Vector3> openBoxEventListener;
+    private UnityAction<Vector3> potCollidesGroundEventListener;
+    private UnityAction<Vector3> dropBloodEventListener;
     private UnityAction<Vector3, float> collideBasketEventListener;
     private UnityAction<Vector3, float> collideBarrelEventListener;
     private UnityAction<Vector3, float> collideBedEventListener;
     private UnityAction<Vector3, float> collideDeskChairEventListener;
     private UnityAction<Vector3, float> collideWallEventListener;
-    private UnityAction<Vector3, float> potCollidesGroundEventListener;
     private UnityAction<GameObject> touchNotebookEventListener;
     private UnityAction<GameObject> touchScrollEventListener;
     private UnityAction<GameObject> touchCatEventListener;
-    private UnityAction<GameObject> touchZombieEventListener;
+    // private UnityAction<GameObject> touchZombieEventListener;
 
 
 
     void Awake()
     {
+        attackPlayerEventListener = new UnityAction<Vector3>(attackPlayerEventHandler);
         victoryEventListener = new UnityAction<Vector3>(victoryEventHandler);
         openDoorEventListener = new UnityAction<Vector3>(openDoorEventHandler);
         openCabinetEventListener = new UnityAction<Vector3>(openCabinetEventHandler);
         openBoxEventListener = new UnityAction<Vector3>(openBoxEventHandler);
-
+        potCollidesGroundEventListener = new UnityAction<Vector3>(potCollidesGroundEventHandler);
+        dropBloodEventListener = new UnityAction<Vector3>(dropBloodEventHandler);
         collideBasketEventListener = new UnityAction<Vector3, float>(collideBasketEventHandler);
         collideBarrelEventListener = new UnityAction<Vector3, float>(collideBarrelEventHandler);
         collideBedEventListener = new UnityAction<Vector3, float>(collideBedEventHandler);
         collideDeskChairEventListener = new UnityAction<Vector3, float>(collideDeskChairEventHandler);
         collideWallEventListener = new UnityAction<Vector3, float>(collideWallEventHandler);
-        potCollidesGroundEventListener = new UnityAction<Vector3, float>(potCollidesGroundEventHandler);
         touchNotebookEventListener = new UnityAction<GameObject>(touchNotebookEventHandler);
         touchScrollEventListener = new UnityAction<GameObject>(touchScrollEventHandler);
         touchCatEventListener = new UnityAction<GameObject>(touchCatEventHandler);
-        touchZombieEventListener = new UnityAction<GameObject>(touchZombieEventHandler);
+        // touchZombieEventListener = new UnityAction<GameObject>(touchZombieEventHandler);
     }
 
     void OnEnable()
     {
+        EventManager.StartListening<AttackPlayerEvent, Vector3>(attackPlayerEventListener);
         EventManager.StartListening<VictoryEvent, Vector3>(victoryEventListener);
         EventManager.StartListening<OpenDoorEvent, Vector3>(openDoorEventListener);
         EventManager.StartListening<OpenCabinetEvent, Vector3>(openCabinetEventListener);
         EventManager.StartListening<OpenBoxEvent, Vector3>(openBoxEventListener);
+        EventManager.StartListening<PotCollidesGroundEvent, Vector3>(potCollidesGroundEventListener);
+        EventManager.StartListening<DropBloodEvent, Vector3>(dropBloodEventListener);
         EventManager.StartListening<CollideBasketEvent, Vector3, float>(collideBasketEventListener);
         EventManager.StartListening<CollideBarrelEvent, Vector3, float>(collideBarrelEventListener);
         EventManager.StartListening<CollideBedEvent, Vector3, float>(collideBedEventListener);
         EventManager.StartListening<CollideDeskChairEvent, Vector3, float>(collideDeskChairEventListener);
         EventManager.StartListening<CollideWallEvent, Vector3, float>(collideWallEventListener);
-        EventManager.StartListening<PotCollidesGroundEvent, Vector3, float>(potCollidesGroundEventListener);
         EventManager.StartListening<TouchNotebookEvent, GameObject>(touchNotebookEventListener);
         EventManager.StartListening<TouchScrollEvent, GameObject>(touchScrollEventListener);
         EventManager.StartListening<TouchCatEvent, GameObject>(touchCatEventListener);
-        EventManager.StartListening<TouchZombieEvent, GameObject>(touchZombieEventListener);
+        // EventManager.StartListening<TouchZombieEvent, GameObject>(touchZombieEventListener);
     }
 
     void OnDisable()
     {
+        EventManager.StopListening<AttackPlayerEvent, Vector3>(attackPlayerEventListener);
         EventManager.StopListening<VictoryEvent, Vector3>(victoryEventListener);
         EventManager.StopListening<OpenDoorEvent, Vector3>(openDoorEventListener);
         EventManager.StopListening<OpenCabinetEvent, Vector3>(openCabinetEventListener);
         EventManager.StopListening<OpenBoxEvent, Vector3>(openBoxEventListener);
-
+        EventManager.StopListening<PotCollidesGroundEvent, Vector3>(potCollidesGroundEventListener);
+        EventManager.StopListening<DropBloodEvent, Vector3>(dropBloodEventListener);
         EventManager.StopListening<CollideBasketEvent, Vector3, float>(collideBasketEventListener);
         EventManager.StopListening<CollideBarrelEvent, Vector3, float>(collideBarrelEventListener);
         EventManager.StopListening<CollideBedEvent, Vector3, float>(collideBedEventListener);
         EventManager.StopListening<CollideDeskChairEvent, Vector3, float>(collideDeskChairEventListener);
         EventManager.StopListening<CollideWallEvent, Vector3, float>(collideWallEventListener);
-        EventManager.StopListening<PotCollidesGroundEvent, Vector3, float>(potCollidesGroundEventListener);
         EventManager.StopListening<TouchNotebookEvent, GameObject>(touchNotebookEventListener);
         EventManager.StopListening<TouchScrollEvent, GameObject>(touchScrollEventListener);
         EventManager.StopListening<TouchCatEvent, GameObject>(touchCatEventListener);
-        EventManager.StopListening<TouchZombieEvent, GameObject>(touchZombieEventListener);
+        // EventManager.StopListening<TouchZombieEvent, GameObject>(touchZombieEventListener);
+    }
+
+    void attackPlayerEventHandler(Vector3 worldPos)
+    {
+        if (eventSound3DPrefab != null)
+        {
+
+            EventSound3D snd = Instantiate(eventSound3DPrefab, worldPos, Quaternion.identity, null);
+
+            // snd.gameObject.AddComponent<attackPlayerAudioCancelOnDeath>();
+
+            snd.audioSrc.clip = this.attackPlayerAudio[Random.Range(0, this.attackPlayerAudio.Length)];
+
+            snd.audioSrc.minDistance = 5f;
+            snd.audioSrc.maxDistance = 100f;
+
+            snd.audioSrc.Play();
+        }
     }
 
     void victoryEventHandler(Vector3 worldPos)
@@ -147,6 +173,36 @@ public class AudioEventManager : MonoBehaviour
             EventSound3D snd = Instantiate(eventSound3DPrefab, worldPos, Quaternion.identity, null);
 
             snd.audioSrc.clip = this.openBoxAudio;
+
+            snd.audioSrc.minDistance = 10f;
+            snd.audioSrc.maxDistance = 500f;
+
+            snd.audioSrc.Play();
+        }
+    }
+
+    void potCollidesGroundEventHandler(Vector3 worldPos)
+    {
+        if (eventSound3DPrefab != null)
+        {
+            EventSound3D snd = Instantiate(eventSound3DPrefab, worldPos, Quaternion.identity, null);
+
+            snd.audioSrc.clip = this.potCollidesGroundAudio;
+
+            snd.audioSrc.minDistance = 10f;
+            snd.audioSrc.maxDistance = 500f;
+
+            snd.audioSrc.Play();
+        }
+    }
+
+    void dropBloodEventHandler(Vector3 worldPos)
+    {
+        if (eventSound3DPrefab != null)
+        {
+            EventSound3D snd = Instantiate(eventSound3DPrefab, worldPos, Quaternion.identity, null);
+
+            snd.audioSrc.clip = this.dropBloodAudio;
 
             snd.audioSrc.minDistance = 10f;
             snd.audioSrc.maxDistance = 500f;
@@ -245,42 +301,6 @@ public class AudioEventManager : MonoBehaviour
         snd.audioSrc.Play();
     }
 
-    void potCollidesGroundEventHandler(Vector3 worldPos, float collisionMagnitude)
-    {
-        //AudioSource.PlayClipAtPoint(this.potCollidesGroundAudio, worldPos, 1f);
-
-        if (eventSound3DPrefab)
-        {
-            if (collisionMagnitude > 300f)
-            {
-
-                EventSound3D snd = Instantiate(eventSound3DPrefab, worldPos, Quaternion.identity, null);
-
-                snd.audioSrc.clip = this.potCollidesGroundAudio;
-
-                snd.audioSrc.minDistance = 5f;
-                snd.audioSrc.maxDistance = 100f;
-
-                snd.audioSrc.Play();
-
-                if (collisionMagnitude > 500f)
-                {
-
-                    EventSound3D snd2 = Instantiate(eventSound3DPrefab, worldPos, Quaternion.identity, null);
-
-                    snd2.audioSrc.clip = this.potCollidesGroundAudio;
-
-                    snd2.audioSrc.minDistance = 5f;
-                    snd2.audioSrc.maxDistance = 100f;
-
-                    snd2.audioSrc.Play();
-                }
-            }
-
-
-        }
-    }
-
     void touchNotebookEventHandler(GameObject go)
     {
         //AudioSource.PlayClipAtPoint(this.touchNotebookAudio, worldPos, 1f);
@@ -335,6 +355,7 @@ public class AudioEventManager : MonoBehaviour
         }
     }
 
+    /*
     void touchZombieEventHandler(GameObject go)
     {
         //AudioSource.PlayClipAtPoint(this.touchZombieAudio, worldPos, 1f);
@@ -352,4 +373,5 @@ public class AudioEventManager : MonoBehaviour
             snd.audioSrc.Play();
         }
     }
+    */
 }

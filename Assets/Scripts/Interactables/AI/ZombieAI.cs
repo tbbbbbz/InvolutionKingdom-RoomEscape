@@ -42,9 +42,12 @@ public class ZombieAI : MonoBehaviour
                 break;
             case BehaviourState.ATTACK:
                 behaviourState = BehaviourState.IDLE;
+                EventManager.TriggerEvent<AttackPlayerEvent, Vector3>(transform.position);
                 break;
 
         }
+
+
            
     }
 

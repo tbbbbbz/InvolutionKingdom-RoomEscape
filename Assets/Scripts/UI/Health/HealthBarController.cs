@@ -13,5 +13,6 @@ public class HealthBarController : MonoBehaviour
     {
         health = health - damage;
         healthBar.fillAmount = health / startHealth;
+        EventManager.TriggerEvent<DropBloodEvent, Vector3>(transform.position);
     }
 }

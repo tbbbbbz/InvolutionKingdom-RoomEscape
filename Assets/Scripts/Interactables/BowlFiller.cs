@@ -20,6 +20,12 @@ public class BowlFiller : InteractableObject
         if (playerNearBy && playerInput.InMiddleOfAction && isInteractable)
         {
             this.gameObject.transform.Find("BrownSugar").gameObject.SetActive(true);
+
+            if (isInteractable)
+            {
+                EventManager.TriggerEvent<PotCollidesGroundEvent, Vector3>(transform.position);
+            }
+
             isInteractable = false;
         }
     }
