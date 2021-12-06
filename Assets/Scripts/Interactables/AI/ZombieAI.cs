@@ -41,7 +41,6 @@ public class ZombieAI : MonoBehaviour
                 animator.SetBool("Walking", true);
                 break;
             case BehaviourState.ATTACK:
-                behaviourState = BehaviourState.IDLE;
                 break;
 
         }
@@ -65,6 +64,7 @@ public class ZombieAI : MonoBehaviour
     {
         healthBarController.onTakeDamage(25);
         player.GetComponent<Animator>().SetBool("Falling", true);
+        behaviourState = BehaviourState.IDLE;
     }
 
 }
