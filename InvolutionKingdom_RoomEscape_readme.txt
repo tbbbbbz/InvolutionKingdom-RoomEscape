@@ -41,7 +41,8 @@ When entering the game and successfully escaping the room, there will be a UI in
 - Wiring up trigger logic(aka TableTrigger, bucketInteractor, drawerInteractor etc.)
 
 *Hang Yang*:
-- Assist the design of character control
+- Assist the design of character control 
+- Assist the design of camera control
 - Create terrain and fence objects
 - Write the play instruction in the readme document
 
