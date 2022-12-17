@@ -1,6 +1,9 @@
 # Room Escape
 by Involution Kingdom
 
+### Unity Version
+2020.3.16f1 LTS
+
 ### Start scene file
 Our start scene is morgueStartMenu, morgue is our main scene
 
